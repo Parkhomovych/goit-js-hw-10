@@ -7,11 +7,7 @@ fetchBreeds()
     refs.load.style.display = 'none';
     refs.select.style.display = 'block';
   })
-  .catch(err => {
-    console.log(err);
-
-    error(err);
-  });
+  .catch(err => error(err));
 
 function createOption(arrBreed) {
   return arrBreed
@@ -30,10 +26,7 @@ select.addEventListener('change', evt => {
       load.style.display = 'none';
       div.style.display = 'flex';
     })
-    .catch(err => {
-      console.log(err);
-      error(err);
-    });
+    .catch(err => error(err));
 });
 
 function createMarkup(cats) {
