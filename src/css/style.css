@@ -41,6 +41,7 @@
   margin-right: 50%;
 }
 .cat-info {
+  width: 750px;
   display: flex;
   gap: 15px;
 }
