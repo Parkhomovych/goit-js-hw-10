@@ -1,0 +1,10 @@
+ Report.success(
+ 'Success',
+ '"Take your cats."',
+ 'Okay',
+ );
+ Report.failure(
+ 'Failure',
+ '"Oops! Something went wrong!"',
+ 'Okay',
+ );
