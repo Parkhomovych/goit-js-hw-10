@@ -1,12 +1,13 @@
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
-import { error, refs, closeLoadOpenSelect } from './js/helpers';
+import { error, refs } from './js/helpers';
 const { select, load, div } = refs;
 fetchBreeds()
   .then(data => {
     select.innerHTML = createOption(data);
-    closeLoadOpenSelect();
+    refs.load.style.display = 'none';
+    refs.select.style.display = 'block';
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err);
 
     error(err);
@@ -20,17 +21,16 @@ function createOption(arrBreed) {
 
 select.addEventListener('change', evt => {
   load.style.display = 'block';
-  select.style.display = 'none';
-  div.innerHTML = '';
+  div.style.display = 'none';
 
   const catId = evt.target.value;
   fetchCatByBreed(catId)
     .then(data => {
-      closeLoadOpenSelect();
-
       createMarkup(data);
+      load.style.display = 'none';
+      div.style.display = 'flex';
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       error(err);
     });

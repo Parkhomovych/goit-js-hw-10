@@ -8,24 +8,21 @@ function fetchBreeds() {
 
   return axios
     .get(BASE_URL)
-    .then(response => {
-      return response.data;
-    })
-    .catch((err) => {
-      error(err);
-    });
+    .then(response => response.data)
+    .catch(err => error(err));
 }
 function fetchCatByBreed(breedId) {
   const BASE_URL = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`;
-
   return axios
     .get(BASE_URL)
     .then(response => {
+      console.log(response);
+      if (response.data.length === 0) {
+        throw error;
+      }
       return response.data;
     })
-    .catch((err) => {
-      error(err);
-    });
+    .catch(err => error(err));
 }
 
 export { fetchBreeds, fetchCatByBreed };
